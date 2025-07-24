@@ -3,6 +3,8 @@ from constants import *
 from player import Player
 from asteroid import Asteroid
 from asteroidfield import AsteroidField
+import  sys
+
 
 def main():
     pygame.init()
@@ -33,6 +35,10 @@ def main():
         updatable.update(dt)
         for obj in drawable:
             obj.draw(screen)
+        for obj in asteroids:
+            if obj.collided(player):
+                sys.exit()
+
         pygame.display.flip()
 
         for event in pygame.event.get():
